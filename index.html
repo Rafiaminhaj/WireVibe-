@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WireVibe - Sketch to Code AI</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">✨</span>
+            <h1>WireVibe</h1>
+        </div>
+        <nav>
+            <a href="https://github.com/Rafiaminhaj/WireVibe-" target="_blank" class="github-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                Star on GitHub
+            </a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="hero-text">
+            <h2>Sketch your ideas.<br><span class="text-gradient">Vibe it to reality.</span></h2>
+            <p>Draw a rough wireframe below and watch our AI turn it into production-ready code instantly.</p>
+        </div>
+
+        <!-- 3D Flip Container -->
+        <div class="scene">
+            <div class="card" id="vibe-card">
+                
+                <!-- Front: Drawing Canvas -->
+                <div class="card__face card__face--front">
+                    <div class="toolbar">
+                        <div class="tools">
+                            <button class="tool-btn active" id="btn-draw" title="Draw">✏️</button>
+                            <button class="tool-btn" id="btn-erase" title="Erase">🧽</button>
+                            <div class="divider"></div>
+                            <input type="range" id="brush-size" min="2" max="20" value="4">
+                        </div>
+                        <button class="tool-btn danger" id="btn-clear">Clear</button>
+                    </div>
+                    
+                    <div class="canvas-container">
+                        <canvas id="drawing-canvas"></canvas>
+                        
+                        <!-- Magic Overlay for Scanning Effect -->
+                        <div class="magic-scan-overlay" id="scan-overlay">
+                            <div class="scan-line"></div>
+                            <p class="scan-text">Vibing your design...</p>
+                        </div>
+                    </div>
+
+                    <div class="action-bar">
+                        <button class="primary-btn glow-effect" id="btn-vibe">
+                            <span class="btn-text">✨ Vibe It</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Back: Code Editor -->
+                <div class="card__face card__face--back">
+                    <div class="toolbar back-toolbar">
+                        <div class="tabs">
+                            <button class="tab-btn active">HTML/CSS</button>
+                        </div>
+                        <div class="back-actions">
+                            <button class="tool-btn" id="btn-copy" title="Copy Code">📋 Copy</button>
+                            <button class="primary-btn outline" id="btn-back">⬅️ Back to Canvas</button>
+                        </div>
+                    </div>
+                    
+                    <div class="code-container">
+                        <pre><code class="language-html" id="generated-code">
+<!-- Code will magically appear here -->
+                        </code></pre>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
