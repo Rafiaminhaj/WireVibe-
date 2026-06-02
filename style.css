@@ -232,6 +232,26 @@ input[type=range] {
     width: 100px;
 }
 
+.color-picker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.color-picker::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 2px solid var(--glass-border);
+}
+.color-picker::-moz-color-swatch {
+    border-radius: 50%;
+    border: 2px solid var(--glass-border);
+}
+
 /* Canvas Area */
 .canvas-container {
     flex: 1;

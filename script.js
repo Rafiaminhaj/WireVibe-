@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.lineCap = 'round';
         
         if (currentMode === 'draw') {
-            ctx.strokeStyle = '#ffd700'; // Gold color for drawing
+            ctx.strokeStyle = document.getElementById('brush-color').value;
             ctx.globalCompositeOperation = 'source-over';
         } else if (currentMode === 'erase') {
             ctx.globalCompositeOperation = 'destination-out';
@@ -109,6 +109,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     brushSizeInput.addEventListener('input', (e) => {
         brushSize = e.target.value;
+    });
+
+    // Download Feature
+    const btnDownload = document.getElementById('btn-download');
+    btnDownload.addEventListener('click', () => {
+        // Create a temporary canvas to add a background color (since main canvas is transparent)
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+        const tempCtx = tempCanvas.getContext('2d');
+        
+        // Fill dark background
+        tempCtx.fillStyle = '#0b0615';
+        tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+        
+        // Draw the original canvas over it
+        tempCtx.drawImage(canvas, 0, 0);
+        
+        const dataURL = tempCanvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.download = 'wirevibe-sketch.png';
+        link.href = dataURL;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     });
 
     // --- Flip & Generate Logic (Hackathon Demo Mode) ---
