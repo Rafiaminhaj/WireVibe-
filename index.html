@@ -52,6 +52,8 @@
                             <input type="range" id="brush-size" min="2" max="20" value="4" title="Brush Size">
                         </div>
                         <div class="right-tools" style="display: flex; gap: 0.5rem;">
+                            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                            <button class="tool-btn" id="btn-upload" title="Upload Sketch">📸 Upload</button>
                             <button class="tool-btn" id="btn-download" title="Save Sketch">💾 Save</button>
                             <button class="tool-btn danger" id="btn-clear">Clear</button>
                         </div>
@@ -78,7 +80,13 @@
                 <div class="card__face card__face--back">
                     <div class="toolbar back-toolbar">
                         <div class="tabs">
-                            <button class="tab-btn active">HTML/CSS</button>
+                            <button class="tab-btn active" id="tab-code">HTML/CSS</button>
+                            <button class="tab-btn" id="tab-preview">Preview 👁️</button>
+                        </div>
+                        <div class="device-toggles" id="device-toggles" style="display: none; gap: 0.5rem; flex: 1; justify-content: center;">
+                            <button class="tool-btn active" id="device-desktop" title="Desktop View" style="font-size: 1rem;">💻</button>
+                            <button class="tool-btn" id="device-tablet" title="Tablet View" style="font-size: 1rem;">📳</button>
+                            <button class="tool-btn" id="device-mobile" title="Mobile View" style="font-size: 1rem;">📱</button>
                         </div>
                         <div class="back-actions">
                             <button class="tool-btn" id="btn-copy" title="Copy Code">📋 Copy</button>
@@ -86,16 +94,28 @@
                         </div>
                     </div>
                     
-                    <div class="code-container">
+                    <div class="code-container" id="code-view">
                         <pre><code class="language-html" id="generated-code">
 <!-- Code will magically appear here -->
                         </code></pre>
+                    </div>
+                    
+                    <div class="preview-container" id="preview-view" style="display: none; flex: 1; background: #eee; align-items: center; justify-content: center; overflow: hidden;">
+                        <iframe id="preview-frame" style="width: 100%; height: 100%; border: none; transition: width 0.3s ease; background: #fff; box-shadow: 0 0 20px rgba(0,0,0,0.1);"></iframe>
                     </div>
                 </div>
 
             </div>
         </div>
     </main>
+
+    <!-- VibeBot Chat Widget -->
+    <div class="vibebot-widget">
+        <div class="vibebot-avatar">🤖</div>
+        <div class="vibebot-bubble" id="vibebot-message">
+            Hi! Ready to build something awesome? Sketch it out!
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

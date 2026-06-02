@@ -136,6 +136,36 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.removeChild(link);
     });
 
+    // Image Upload Feature
+    const btnUpload = document.getElementById('btn-upload');
+    const imageUploadInput = document.getElementById('image-upload');
+    const botMessage = document.getElementById('vibebot-message');
+
+    btnUpload.addEventListener('click', () => {
+        imageUploadInput.click();
+    });
+
+    imageUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const img = new Image();
+                img.onload = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    // Draw image scaled to fit canvas
+                    const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+                    const x = (canvas.width / 2) - (img.width / 2) * scale;
+                    const y = (canvas.height / 2) - (img.height / 2) * scale;
+                    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+                    if(botMessage) botMessage.textContent = "Ooh, nice upload! That looks complicated. Click Vibe It when ready!";
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
     // --- Flip & Generate Logic (Hackathon Demo Mode) ---
     const btnVibe = document.getElementById('btn-vibe');
     const btnBack = document.getElementById('btn-back');
@@ -190,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scanOverlay.classList.add('active');
         btnVibe.disabled = true;
         btnVibe.innerHTML = "Processing...";
+        if(botMessage) botMessage.textContent = "Analyzing pixels... generating HTML structure... wait for it...";
 
         // Fake processing delay for dramatic effect
         setTimeout(() => {
@@ -221,5 +252,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 btnCopy.textContent = originalText;
             }, 2000);
         });
+    });
+
+    // --- Tabs & Preview Logic ---
+    const tabCode = document.getElementById('tab-code');
+    const tabPreview = document.getElementById('tab-preview');
+    const codeView = document.getElementById('code-view');
+    const previewView = document.getElementById('preview-view');
+    const previewFrame = document.getElementById('preview-frame');
+    const deviceToggles = document.getElementById('device-toggles');
+    const btnDesktop = document.getElementById('device-desktop');
+    const btnTablet = document.getElementById('device-tablet');
+    const btnMobile = document.getElementById('device-mobile');
+
+    tabCode.addEventListener('click', () => {
+        tabCode.classList.add('active');
+        tabPreview.classList.remove('active');
+        codeView.style.display = 'block';
+        previewView.style.display = 'none';
+        deviceToggles.style.display = 'none';
+    });
+
+    tabPreview.addEventListener('click', () => {
+        tabPreview.classList.add('active');
+        tabCode.classList.remove('active');
+        codeView.style.display = 'none';
+        previewView.style.display = 'flex';
+        deviceToggles.style.display = 'flex';
+        
+        // Inject fake result into iframe
+        previewFrame.srcdoc = fakeCodeResult;
+        if(botMessage) botMessage.textContent = "Wow! Look at that UI! You can toggle devices up top.";
+    });
+
+    btnDesktop.addEventListener('click', () => {
+        btnDesktop.classList.add('active');
+        btnTablet.classList.remove('active');
+        btnMobile.classList.remove('active');
+        previewFrame.style.width = '100%';
+    });
+
+    btnTablet.addEventListener('click', () => {
+        btnTablet.classList.add('active');
+        btnDesktop.classList.remove('active');
+        btnMobile.classList.remove('active');
+        previewFrame.style.width = '768px';
+    });
+
+    btnMobile.addEventListener('click', () => {
+        btnMobile.classList.add('active');
+        btnDesktop.classList.remove('active');
+        btnTablet.classList.remove('active');
+        previewFrame.style.width = '375px';
     });
 });
