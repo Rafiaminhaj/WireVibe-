@@ -305,9 +305,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const btnDownload = document.getElementById('btn-download');
-    if (btnDownload) {
-        btnDownload.addEventListener('click', () => {
+    const btnDownloadHTML = document.getElementById('btn-download-html');
+    if (btnDownloadHTML) {
+        btnDownloadHTML.addEventListener('click', () => {
             const blob = new Blob([currentCodeResult], { type: "text/html" });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -328,10 +328,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
             
-            const originalText = btnDownload.textContent;
-            btnDownload.textContent = "✅ Downloaded!";
+            const originalText = btnDownloadHTML.textContent;
+            btnDownloadHTML.textContent = "✅ Downloaded!";
             setTimeout(() => {
-                btnDownload.textContent = originalText;
+                btnDownloadHTML.textContent = originalText;
             }, 2000);
         });
     }
