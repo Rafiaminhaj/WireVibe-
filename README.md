@@ -21,9 +21,11 @@ Built for the **Elite Coders Open Source Hackathon 2026**, WireVibe allows devel
 
 ## 🚀 Features
 - **Interactive Canvas Engine:** Smooth drawing experience with customizable brush sizes and an eraser tool.
-- **Premium Aesthetics:** A sleek "Royal Purple & Gold" dark mode theme featuring glassmorphism and modern UI trends.
+- **Image Upload:** Don't want to draw? Upload your existing UI sketches or wireframes directly onto the canvas!
 - **Magical 3D Flip UI:** A cinematic scanning laser and a `preserve-3d` flip card animation that wows users.
-- **Instant Code Generation:** (Demo Mode) Instantly receive beautifully highlighted HTML/CSS code ready to be copied into your project.
+- **Live Preview & Device Toggles:** Toggle between Mobile, Tablet, and Desktop views to see exactly how your generated UI looks in real-time.
+- **VibeBot:** A floating AI assistant widget that guides you through the process.
+- **Bring Your Own Key (BYOK):** Securely enter your own Gemini API Key in the Settings menu to connect to real AI, or leave it blank to run in Demo Mode.
 - **Zero Dependencies:** Built entirely with Vanilla HTML, CSS, and JS for lightning-fast performance.
 
 ## 🛠️ Tech Stack

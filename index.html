@@ -23,7 +23,8 @@
             <span class="logo-icon">✨</span>
             <h1>WireVibe</h1>
         </div>
-        <nav>
+        <nav style="display: flex; gap: 1rem; align-items: center;">
+            <button class="settings-btn" id="btn-settings" title="API Settings" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border); color: #fff; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-family: 'Outfit', sans-serif; backdrop-filter: blur(5px);">⚙️ Settings</button>
             <a href="https://github.com/Rafiaminhaj/WireVibe-" target="_blank" class="github-btn">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 Star on GitHub
@@ -114,6 +115,23 @@
         <div class="vibebot-avatar">🤖</div>
         <div class="vibebot-bubble" id="vibebot-message">
             Hi! Ready to build something awesome? Sketch it out!
+        </div>
+    </div>
+
+    <!-- API Settings Modal -->
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⚙️ API Settings (BYOK)</h3>
+                <button class="close-modal" id="btn-close-modal">✖</button>
+            </div>
+            <div class="modal-body">
+                <p>WireVibe uses the <strong>Bring Your Own Key (BYOK)</strong> model for security. Paste your Gemini API key below to use real AI, or leave it empty to use Demo Mode.</p>
+                <input type="password" id="api-key-input" class="glass-input" placeholder="Enter Gemini API Key (AIzaSy...)">
+            </div>
+            <div class="modal-footer">
+                <button class="primary-btn" id="btn-save-key">Save Key</button>
+            </div>
         </div>
     </div>
 

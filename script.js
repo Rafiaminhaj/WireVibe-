@@ -220,7 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
         scanOverlay.classList.add('active');
         btnVibe.disabled = true;
         btnVibe.innerHTML = "Processing...";
-        if(botMessage) botMessage.textContent = "Analyzing pixels... generating HTML structure... wait for it...";
+        
+        const apiKey = localStorage.getItem('wirevibe_gemini_key');
+        if (apiKey) {
+            if(botMessage) botMessage.textContent = "API Key found! Connecting to Gemini Vision API... (BYOK Mode)";
+        } else {
+            if(botMessage) botMessage.textContent = "Analyzing pixels... generating HTML structure... wait for it... (Demo Mode)";
+        }
 
         // Fake processing delay for dramatic effect
         setTimeout(() => {
@@ -305,4 +311,50 @@ document.addEventListener('DOMContentLoaded', () => {
         btnTablet.classList.remove('active');
         previewFrame.style.width = '375px';
     });
+
+    // --- Settings Modal & API Key Logic ---
+    const btnSettings = document.getElementById('btn-settings');
+    const settingsModal = document.getElementById('settings-modal');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnSaveKey = document.getElementById('btn-save-key');
+    const apiKeyInput = document.getElementById('api-key-input');
+
+    // Load saved key on startup
+    const savedKey = localStorage.getItem('wirevibe_gemini_key');
+    if (savedKey && apiKeyInput) {
+        apiKeyInput.value = savedKey;
+    }
+
+    if(btnSettings) {
+        btnSettings.addEventListener('click', () => {
+            settingsModal.classList.add('active');
+        });
+    }
+
+    if(btnCloseModal) {
+        btnCloseModal.addEventListener('click', () => {
+            settingsModal.classList.remove('active');
+        });
+    }
+
+    if(btnSaveKey) {
+        btnSaveKey.addEventListener('click', () => {
+            const key = apiKeyInput.value.trim();
+            if (key) {
+                localStorage.setItem('wirevibe_gemini_key', key);
+                btnSaveKey.textContent = "Saved!";
+                setTimeout(() => {
+                    btnSaveKey.textContent = "Save Key";
+                    settingsModal.classList.remove('active');
+                }, 1000);
+            } else {
+                localStorage.removeItem('wirevibe_gemini_key');
+                btnSaveKey.textContent = "Cleared!";
+                setTimeout(() => {
+                    btnSaveKey.textContent = "Save Key";
+                    settingsModal.classList.remove('active');
+                }, 1000);
+            }
+        });
+    }
 });
