@@ -260,6 +260,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const btnDownload = document.getElementById('btn-download');
+    if (btnDownload) {
+        btnDownload.addEventListener('click', () => {
+            const blob = new Blob([fakeCodeResult], { type: "text/html" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "wirevibe-generated.html";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            const originalText = btnDownload.textContent;
+            btnDownload.textContent = "✅ Downloaded!";
+            setTimeout(() => {
+                btnDownload.textContent = originalText;
+            }, 2000);
+        });
+    }
+
     // --- Tabs & Preview Logic ---
     const tabCode = document.getElementById('tab-code');
     const tabPreview = document.getElementById('tab-preview');
