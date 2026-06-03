@@ -215,7 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
 </body>
 </html>`;
 
-    btnVibe.addEventListener('click', () => {
+    let currentCodeResult = fakeCodeResult;
+
+    btnVibe.addEventListener('click', async () => {
         // Show scan overlay
         scanOverlay.classList.add('active');
         btnVibe.disabled = true;
@@ -224,26 +226,69 @@ document.addEventListener('DOMContentLoaded', () => {
         const apiKey = localStorage.getItem('wirevibe_gemini_key');
         if (apiKey) {
             if(botMessage) botMessage.textContent = "API Key found! Connecting to Gemini Vision API... (BYOK Mode)";
+            
+            try {
+                // 1. Get base64 image from canvas
+                const base64Image = canvas.toDataURL('image/jpeg', 0.8).split(',')[1];
+                
+                // 2. Call Gemini API
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{
+                            parts: [
+                                { text: "You are an expert frontend web developer. Look at this wireframe/sketch and write production-ready HTML and CSS to recreate it. Use modern styling, glassmorphism, flexbox, and nice colors. Return ONLY raw HTML code (with embedded CSS in <style>). Do NOT wrap the response in markdown backticks (like ```html)." },
+                                { inlineData: { mimeType: "image/jpeg", data: base64Image } }
+                            ]
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} - Invalid Key or Server Error`);
+                }
+
+                const data = await response.json();
+                let generatedText = data.candidates[0].content.parts[0].text;
+                
+                // Clean markdown if present
+                generatedText = generatedText.replace(/^```(html)?\n/, '').replace(/\n```$/, '');
+                
+                currentCodeResult = generatedText.trim();
+                if(botMessage) botMessage.textContent = "Success! Code generated perfectly.";
+                
+            } catch (error) {
+                console.error(error);
+                if(botMessage) botMessage.textContent = "Error connecting to AI. Using Demo Mode instead. Check your API Key!";
+                currentCodeResult = fakeCodeResult;
+            }
         } else {
             if(botMessage) botMessage.textContent = "Analyzing pixels... generating HTML structure... wait for it... (Demo Mode)";
+            currentCodeResult = fakeCodeResult;
+            // Fake delay for demo mode
+            await new Promise(resolve => setTimeout(resolve, 2000));
         }
 
-        // Fake processing delay for dramatic effect
+        // Show result
+        scanOverlay.classList.remove('active');
+        card.classList.add('is-flipped');
+        
+        // Set code and highlight
+        generatedCodeElement.textContent = currentCodeResult;
+        hljs.highlightElement(generatedCodeElement);
+        
+        // Update live preview iframe if it exists
+        const iframe = document.getElementById('preview-frame');
+        if (iframe) {
+            iframe.srcdoc = currentCodeResult;
+        }
+
+        // Reset button
         setTimeout(() => {
-            scanOverlay.classList.remove('active');
-            card.classList.add('is-flipped');
-            
-            // Set code and highlight
-            generatedCodeElement.textContent = fakeCodeResult;
-            hljs.highlightElement(generatedCodeElement);
-
-            // Reset button
-            setTimeout(() => {
-                btnVibe.disabled = false;
-                btnVibe.innerHTML = `<span class="btn-text">✨ Vibe It</span>`;
-            }, 500);
-
-        }, 2500);
+            btnVibe.disabled = false;
+            btnVibe.innerHTML = `<span class="btn-text">✨ Vibe It</span>`;
+        }, 500);
     });
 
     btnBack.addEventListener('click', () => {
@@ -251,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnCopy.addEventListener('click', () => {
-        navigator.clipboard.writeText(fakeCodeResult).then(() => {
+        navigator.clipboard.writeText(currentCodeResult).then(() => {
             const originalText = btnCopy.textContent;
             btnCopy.textContent = "✅ Copied!";
             setTimeout(() => {
@@ -263,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnDownload = document.getElementById('btn-download');
     if (btnDownload) {
         btnDownload.addEventListener('click', () => {
-            const blob = new Blob([fakeCodeResult], { type: "text/html" });
+            const blob = new Blob([currentCodeResult], { type: "text/html" });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
