@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.globalCompositeOperation = 'source-over';
         } else if (currentMode === 'erase') {
             ctx.globalCompositeOperation = 'destination-out';
-            ctx.lineWidth = brushSize * 2; // Make eraser bigger
+            ctx.lineWidth = brushSize * 8; // Make eraser FAT for quick rubbing
         }
 
         ctx.lineTo(pos.x, pos.y);
