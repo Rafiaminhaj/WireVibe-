@@ -318,6 +318,16 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
             
+            // Fire Confetti! 🎉
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#9d4edd', '#ff9e00', '#00e5ff']
+                });
+            }
+            
             const originalText = btnDownload.textContent;
             btnDownload.textContent = "✅ Downloaded!";
             setTimeout(() => {
