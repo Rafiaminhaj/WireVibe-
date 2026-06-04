@@ -1,48 +1,115 @@
-# Contributing to WireVibe ✨
+# 🤝 Contributing to WireVibe
 
-First off, thank you for considering contributing to WireVibe! It's people like you that make the open-source community such an amazing place to learn, inspire, and create.
+First off, **thank you** for considering contributing to WireVibe! 🎉 Every contribution makes this project better for everyone.
 
-WireVibe was built for the **Elite Coders Open Source Hackathon 2026**, and we are open to any improvements, bug fixes, or new features you can bring to the table!
+## 📋 Table of Contents
+- [Code of Conduct](#code-of-conduct)
+- [How Can I Contribute?](#how-can-i-contribute)
+- [Getting Started](#getting-started)
+- [Pull Request Process](#pull-request-process)
+- [Style Guide](#style-guide)
 
-## 🚀 How to Contribute
+## 📜 Code of Conduct
 
-### 1. Fork the Project
-Click the "Fork" button at the top right of this repository to create your own copy.
+This project follows our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you agree to uphold a welcoming, inclusive, and harassment-free environment.
 
-### 2. Clone your Fork
-Clone the repository to your local machine:
-```bash
-git clone https://github.com/YourUsername/WireVibe-.git
+## 💡 How Can I Contribute?
+
+### 🐛 Reporting Bugs
+- Check if the issue already exists in [Issues](https://github.com/Rafiaminhaj/WireVibe-/issues)
+- If not, create a new issue with:
+  - A clear, descriptive title
+  - Steps to reproduce the bug
+  - Expected vs actual behavior
+  - Screenshots (if applicable)
+
+### ✨ Suggesting Features
+- Open an issue with the `enhancement` label
+- Describe the feature and why it would be useful
+- Include mockups or examples if possible
+
+### 🔧 Code Contributions
+Here are some areas where you can help:
+- **UI/UX Improvements** — Better animations, responsive design, accessibility
+- **Canvas Tools** — New drawing tools (shapes, text, undo/redo)
+- **AI Integration** — Support for more AI models (Claude, GPT-4V, etc.)
+- **Export Options** — Export to React, Vue, or other frameworks
+- **Performance** — Optimize canvas rendering and API calls
+
+## 🚀 Getting Started
+
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Edge)
+- Git installed on your machine
+- A code editor (VS Code recommended)
+
+### Setup
+1. **Fork** this repository
+2. **Clone** your fork:
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/WireVibe-.git
+   cd WireVibe-
+   ```
+3. Open `index.html` in your browser — that's it! No build tools needed.
+4. (Optional) For AI features, get a free API key from [Google AI Studio](https://aistudio.google.com)
+
+### Project Structure
+```
+WireVibe/
+├── index.html      # Main HTML structure
+├── style.css       # All styles (glassmorphism, animations, responsive)
+├── script.js       # Core logic (canvas, API, UI interactions)
+└── README.md       # Project documentation
 ```
 
-### 3. Create a Branch
-Create a new branch for your feature or bugfix:
-```bash
-git checkout -b feature/YourAmazingFeature
-```
+## 🔀 Pull Request Process
 
-### 4. Make your Changes
-Add your code! WireVibe uses **Vanilla HTML, CSS, and JS**, so no `npm install` or complex build steps are required. Just edit the files and test them locally in your browser.
+1. Create a **feature branch** from `main`:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+2. Make your changes and **test** them thoroughly
+3. Write clear, descriptive **commit messages**:
+   ```bash
+   git commit -m "feat: add undo/redo functionality to canvas"
+   ```
+4. **Push** to your fork and create a Pull Request
+5. In the PR description, explain:
+   - What changes you made and why
+   - Screenshots/recordings of UI changes
+   - Any breaking changes
 
-### 5. Commit your Changes
-Use clear and descriptive commit messages:
-```bash
-git commit -m "feat: added an amazing new feature"
-```
+### Commit Message Convention
+We follow the [Conventional Commits](https://www.conventionalcommits.org/) standard:
+- `feat:` — New feature
+- `fix:` — Bug fix
+- `docs:` — Documentation changes
+- `style:` — CSS/formatting changes
+- `refactor:` — Code restructuring
 
-### 6. Push to your Fork
-```bash
-git push origin feature/YourAmazingFeature
-```
+## 🎨 Style Guide
 
-### 7. Open a Pull Request
-Go to the original WireVibe repository and click "Compare & pull request". Provide a clear description of the changes you made.
+### JavaScript
+- Use `const` and `let` (no `var`)
+- Use template literals for string interpolation
+- Add comments for complex logic
+- Use `async/await` for API calls
 
-## 🐛 Found a Bug?
-If you find a bug, please open an Issue on GitHub and describe the problem, how to reproduce it, and your environment (Browser, OS).
+### CSS
+- Follow the existing CSS variable system (`--primary-color`, etc.)
+- Use `rem` units for spacing
+- Keep glassmorphism effects consistent
+- Ensure mobile responsiveness
 
-## 💡 Have a Feature Request?
-We'd love to hear your ideas! Open an Issue and tag it as an "enhancement".
+### HTML
+- Use semantic HTML5 elements
+- Keep accessibility in mind (`aria-labels`, `alt` text)
+- Use descriptive `id` and `class` names
 
 ---
-*By contributing to this project, you agree that your contributions will be licensed under its MIT License.*
+
+## 🌟 Recognition
+
+All contributors will be recognized in the README. Your contributions matter!
+
+**Happy Coding!** ✨
