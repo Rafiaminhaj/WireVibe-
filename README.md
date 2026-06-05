@@ -10,6 +10,12 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Gemini AI](https://img.shields.io/badge/Google%20Gemini-4285F4?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://frontend-76xn5h1k3-rafiaminhajs-projects.vercel.app/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Rafiaminhaj/WireVibe-/pulls)
+[![Open Source](https://img.shields.io/badge/Open%20Source-❤️-red)](https://github.com/Rafiaminhaj/WireVibe-)
+
+[🌐 Live Demo](https://frontend-76xn5h1k3-rafiaminhajs-projects.vercel.app/) · [🐛 Report Bug](https://github.com/Rafiaminhaj/WireVibe-/issues/new?template=bug_report.md) · [✨ Request Feature](https://github.com/Rafiaminhaj/WireVibe-/issues/new?template=feature_request.md)
 
 </div>
 
@@ -21,47 +27,117 @@ Ever had a great idea for a UI but didn't want to spend hours writing the boiler
 Built for the **Elite Coders Open Source Hackathon 2026**, WireVibe allows developers and designers to sketch a rough wireframe directly on a web canvas. With a single click of the **"Vibe It"** button, the app performs a stunning 3D flip animation and generates the corresponding HTML and CSS code instantly.
 
 ## 🚀 Features
-- **Interactive Canvas Engine:** Smooth drawing experience with customizable brush sizes and an eraser tool.
-- **Image Upload:** Don't want to draw? Upload your existing UI sketches or wireframes directly onto the canvas!
-- **Magical 3D Flip UI:** A cinematic scanning laser and a `preserve-3d` flip card animation that wows users.
-- **Live Preview & Device Toggles:** Toggle between Mobile, Tablet, and Desktop views to see exactly how your generated UI looks in real-time.
-- **VibeBot:** A floating AI assistant widget that guides you through the process.
-- **Export to HTML:** Instantly download the generated code as a `.html` file directly to your machine.
-- **Bring Your Own Key (BYOK):** Securely enter your own Gemini API Key in the Settings menu to connect to real AI, or leave it blank to run in Demo Mode.
-- **Zero Dependencies:** Built entirely with Vanilla HTML, CSS, and JS for lightning-fast performance.
+
+| Feature | Description |
+|---------|-------------|
+| 🎨 **Interactive Canvas** | Smooth freehand drawing with customizable brush sizes and colors |
+| ✏️ **Smart Eraser** | 8x fat eraser with `destination-out` compositing for quick editing |
+| 📷 **Image Upload** | Upload existing wireframe sketches directly onto the canvas |
+| 🤖 **AI Code Generation** | Google Gemini 1.5 Flash Vision API converts sketches to HTML/CSS |
+| 🔐 **BYOK Security** | Bring Your Own API Key — stored only in `localStorage`, never on servers |
+| 🎭 **3D Flip Animation** | Cinematic `preserve-3d` card flip with scanning laser effect |
+| 📱 **Device Preview** | Toggle Desktop (100%), Tablet (768px), Mobile (375px) viewports |
+| 💾 **One-Click Export** | Download generated code as `.html` with confetti celebration 🎉 |
+| 🤖 **VibeBot Assistant** | Floating AI guide that walks you through the process |
+| 🎨 **Glassmorphism UI** | Modern frosted-glass design with smooth animations |
+| ⚡ **Zero Dependencies** | Pure HTML, CSS, and Vanilla JS — no build tools needed |
+
+## 🏗️ Architecture
+
+```
+WireVibe/
+├── index.html              # Main HTML structure
+├── style.css               # Design system (glassmorphism, animations)
+├── script.js               # Core logic (6 modular sections)
+│   ├── Module 1: Canvas Engine
+│   ├── Module 2: Tool Manager
+│   ├── Module 3: File I/O
+│   ├── Module 4: AI Engine (Gemini API)
+│   ├── Module 5: Preview System
+│   └── Module 6: Settings Manager
+├── vercel.json             # Deployment config with security headers
+├── assets/                 # Banner and static assets
+│   └── banner.png
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.md
+│   │   └── feature_request.md
+│   └── PULL_REQUEST_TEMPLATE.md
+├── CONTRIBUTING.md         # How to contribute
+├── CODE_OF_CONDUCT.md      # Community guidelines
+├── SECURITY.md             # Security policy
+├── CHANGELOG.md            # Version history
+├── DEPLOYMENT.md           # Deployment guide
+├── LICENSE                 # MIT License
+└── README.md               # You are here!
+```
 
 ## 🛠️ Tech Stack
-- **Frontend:** HTML5, Vanilla CSS (CSS3 Variables, Flexbox, 3D Transforms), Vanilla JavaScript (ES6+).
-- **APIs:** HTML5 Canvas API for drawing logic.
-- **Syntax Highlighting:** Highlight.js
+
+| Technology | Purpose |
+|-----------|---------|
+| HTML5 | Semantic page structure |
+| CSS3 | Glassmorphism, 3D transforms, animations |
+| Vanilla JavaScript (ES6+) | All application logic |
+| Canvas API | Freehand drawing engine |
+| Google Gemini 1.5 Flash | AI vision-based code generation |
+| Highlight.js | Syntax highlighting for generated code |
+| canvas-confetti | Download celebration effects |
 
 ## 💻 How to Run Locally
-Since WireVibe has zero build steps or heavy dependencies, running it is incredibly simple:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Rafiaminhaj/WireVibe-.git
-   ```
-2. Open the project folder:
-   ```bash
-   cd WireVibe-
-   ```
-3. Double-click on `index.html` to open it in your favorite web browser (Chrome, Edge, Firefox).
-4. Start drawing and Vibe it!
+Since WireVibe has **zero build steps** and **zero dependencies**, running it is incredibly simple:
 
-## 📸 Sneak Peek
-*(Add your project screenshots here! Just drag and drop an image of your canvas and the generated code)*
+```bash
+# 1. Clone the repository
+git clone https://github.com/Rafiaminhaj/WireVibe-.git
+
+# 2. Open the project folder
+cd WireVibe-
+
+# 3. Open in browser — that's it!
+# Double-click index.html or use a live server
+```
+
+> 💡 **Optional:** For AI features, get a free API key from [Google AI Studio](https://aistudio.google.com) and enter it in Settings.
+
+## 🔐 Security
+
+WireVibe follows a **zero-trust, client-side-only** security model:
+- ✅ No backend server — runs entirely in the browser
+- ✅ No data collection or tracking
+- ✅ API keys stored only in `localStorage`
+- ✅ Security headers configured in `vercel.json`
+
+See [SECURITY.md](./SECURITY.md) for our full security policy.
 
 ## 🤝 Contributing
-This project is open-source and built during a hackathon! We welcome all contributions, whether it's adding new features, integrating a real Generative AI API (like Gemini Vision), or fixing bugs. 
+
+We welcome contributions! Whether it's adding new features, fixing bugs, or improving documentation.
+
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+3. Commit your Changes (`git commit -m 'feat: add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
+
+## 📜 License
+
+Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
+
+## 🙏 Acknowledgments
+
+- [Google Gemini AI](https://ai.google.dev/) — Vision API powering code generation
+- [Highlight.js](https://highlightjs.org/) — Beautiful syntax highlighting
+- [canvas-confetti](https://github.com/catdad/canvas-confetti) — Celebration animations
+- [Elite Coders](https://oshack.xyz) — For organizing this amazing hackathon
+
 ---
 <div align="center">
-  <b>Built with ❤️ by Rafia Minhaj</b><br>
-  <i>Elite Coders Open Source Hackathon 2026</i>
+  <b>Built with ❤️ by <a href="https://github.com/Rafiaminhaj">Rafia Minhaj</a></b><br>
+  <i>Elite Coders Open Source Hackathon 2026</i><br><br>
+  
+  ⭐ Star this repo if you found it useful!
 </div>
