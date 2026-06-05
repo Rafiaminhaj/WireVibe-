@@ -11,11 +11,11 @@
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Gemini AI](https://img.shields.io/badge/Google%20Gemini-4285F4?style=flat&logo=google&logoColor=white)](https://ai.google.dev/)
-[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://frontend-76xn5h1k3-rafiaminhajs-projects.vercel.app/)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://rafiaminhaj.github.io/WireVibe-/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Rafiaminhaj/WireVibe-/pulls)
 [![Open Source](https://img.shields.io/badge/Open%20Source-❤️-red)](https://github.com/Rafiaminhaj/WireVibe-)
 
-[🌐 Live Demo](https://frontend-76xn5h1k3-rafiaminhajs-projects.vercel.app/) · [🐛 Report Bug](https://github.com/Rafiaminhaj/WireVibe-/issues/new?template=bug_report.md) · [✨ Request Feature](https://github.com/Rafiaminhaj/WireVibe-/issues/new?template=feature_request.md)
+[🌐 Live Demo](https://rafiaminhaj.github.io/WireVibe-/) · [🐛 Report Bug](https://github.com/Rafiaminhaj/WireVibe-/issues/new?template=bug_report.md) · [✨ Request Feature](https://github.com/Rafiaminhaj/WireVibe-/issues/new?template=feature_request.md)
 
 </div>
 
